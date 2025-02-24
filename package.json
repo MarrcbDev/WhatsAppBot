@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.13",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "name": "whatsappbot",
+  "version": "1.0.0",
+  "description": "Un bot de whatsapp desarrollado por MarrDev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarrcbDev/WhatsAppBot.git"
+  },
+  "author": "MarrDev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarrcbDev/WhatsAppBot/issues"
+  },
+  "homepage": "https://github.com/MarrcbDev/WhatsAppBot#readme"
+}
