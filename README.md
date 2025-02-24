@@ -1,2 +1,2 @@
 # WhatsAppBot
-Un bot para whatsapp con multiples funcionalidades desarrollado por mí.
+Este bot es creado completamente por MarrcbDev sin fines de lucro y su redistribución está completamenre prohibida.
