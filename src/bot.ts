@@ -16,6 +16,7 @@ import { Boom } from "@hapi/boom";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import fs from "fs";
+import * as qrcode from "qrcode-terminal";
 import path from "path";
 import youtubedl from "youtube-dl-exec";
 import ffmpeg from "fluent-ffmpeg";
@@ -91,19 +92,17 @@ async function startBot() {
 
     sock.ev.on("creds.update", saveCreds);
 
+
     sock.ev.on("connection.update", (update) => {
         const { connection, lastDisconnect } = update;
         if (connection === "close") {
-            const reason = (lastDisconnect?.error as Boom)?.output?.statusCode;
-            if (reason === DisconnectReason.loggedOut) {
-                console.log("Se cerró la sesión, escanea el QR nuevamente.");
-                return;
-            } else {
-                console.log("Intentando reconectar...");
-                startBot();
+            const shouldReconnect = (lastDisconnect?.error as Boom)?.output?.statusCode !== DisconnectReason.loggedOut;
+            console.log("Conexion cerrada. Reconectando...", shouldReconnect);
+            if (shouldReconnect) {
+                startBot(); // Función que inicia el bot
             }
         } else if (connection === "open") {
-            console.log("✅ Bot conectado a WhatsApp");
+            console.log("Conectado a WhatsApp");
         }
     });
 
